@@ -1,7 +1,9 @@
 <?php
-require_once 'libs/controller/testController.class.php';
-require_once 'libs/model/testModel.class.php';
-require_once 'libs/view/testView.class.php';
 
-(new testController())->show();
+require_once 'function.php';
+require_once('config.php');
+
+$view = ORG('smarty/', 'Smarty',$viewConfig);
+
+C('test', 'show');
 

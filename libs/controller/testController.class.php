@@ -1,10 +1,13 @@
 <?php 
 	class testController {
 		function show() {
-			$testModel = new testModel();
-			M('test')
-			$testView = new testView();
-			$testView->display($data);
+			$model = M('test');
+            $data = $model->get();
+//			$testView = V('test');
+//			$testView->display($data);
+            global $view;
+            $view->assign('str', 'feiiiiiiiii');
+            $view->display('test.tpl');
 		}
 	}
 ?>
