@@ -23,4 +23,27 @@ class MySql {
 
         mysql_query("set names " . $dbCharset);
     }
+
+    function query($sql) {
+        if (!($query = mysql_query($sql))) {
+            $this->err(mysql_error() . "<br>" . $sql);
+        } else {
+            return $query;
+        }
+    }
+
+    function findAll($query) {
+        while ($rs = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $list[] = $rs;
+        }
+        return isset($list) ? $list : "";
+    }
+
+    function findOne($query) {
+        return mysql_fetch_array($query, MYSQL_ASSOC);
+    }
+
+    function findResult($query, $row, $column) {
+        return mysql_result($query, $row, $column);
+    }
 } 
